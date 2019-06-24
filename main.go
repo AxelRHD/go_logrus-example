@@ -17,16 +17,18 @@ func main() {
 
 	logr := &logrus.Logger{
 		Out: os.Stderr,
+        // Level: logrus.WarnLevel,
         Level: logrus.DebugLevel,
         Formatter: &easy.Formatter{
             TimestampFormat: "2006-01-02 15:04:05",
-            LogFormat:       "[%lvl%]: %time% - %msg%\n",
+            LogFormat:       "%time% - [%lvl%]:   %msg%\n",
         },
     }
 
 	
 	logr.SetOutput(f)
 
+	logr.Debug("Just boring development stuff.")
 	logr.Info("This is a nice info.")
 	logr.Warning("Alert! Alert!")
 	logr.Error("Something very bad has happened!")
